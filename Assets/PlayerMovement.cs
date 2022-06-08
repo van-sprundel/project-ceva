@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10f;
+    public float rotationSpeed;
     private Rigidbody body;
     public UnityEvent leftDoorTouched;
     public UnityEvent rightDoorTouched;
@@ -23,7 +24,18 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
 
         Vector3 movement = new Vector3(x, 0.0f, 0.0f);
+        movement.Normalize();
+
+        // transform.Translate(movement * speed * Time.deltaTime, Space.World);
         body.velocity = movement * speed;
+
+        if(movement != Vector3.zero) {
+            Quaternion rotation = Quaternion.LookRotation(movement, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+            //transform.forward = movement;
+        }
+
     }
 
     private void OnTriggerEnter(Collider other) {
