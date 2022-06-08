@@ -1,14 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DragObject : MonoBehaviour
 {
+    public delegate void DragEndedDelegate(DragObject dragObject);
+
+    public DragEndedDelegate dragEndedCallback;
+    
+    private bool isDragged = false;
     private Vector3 mOffset;
     private float mZCoord;
 
-    void OnMouseDown()
+    private void OnMouseUp()
     {
+        isDragged = false;
+        dragEndedCallback(this);
+    }
+
+    private void OnMouseDown()
+    {
+        isDragged = true;
         var position = gameObject.transform.position;
         mZCoord = Camera.main.WorldToScreenPoint(
             position).z;
@@ -28,9 +38,12 @@ public class DragObject : MonoBehaviour
         // Convert it to world points
         return Camera.main.ScreenToWorldPoint(mousePoint);
     }
-    
-    void OnMouseDrag()
+
+    private void OnMouseDrag()
     {
-        transform.position = GetMouseAsWorldPoint() + mOffset;
+        if (isDragged)
+        {
+            transform.position = GetMouseAsWorldPoint() + mOffset;
+        }
     }
 }
