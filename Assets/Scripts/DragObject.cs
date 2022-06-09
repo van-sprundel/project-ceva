@@ -6,6 +6,7 @@ public class DragObject : MonoBehaviour
 
     public DragEndedDelegate dragEndedCallback;
     
+    public bool isSnapped = false;
     private bool isDragged = false;
     private Vector3 mOffset;
     private float mZCoord;
@@ -41,7 +42,7 @@ public class DragObject : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if (isDragged)
+        if (isDragged && !isSnapped)
         {
             transform.position = GetMouseAsWorldPoint() + mOffset;
         }
