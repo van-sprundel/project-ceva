@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class TImeController : MonoBehaviour
+public class TimerController : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float timeStart = 60;
     public Text textBox;
 
