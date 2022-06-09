@@ -16,7 +16,8 @@ public class GridCreator : MonoBehaviour
             {
                 var position = new Vector3(SnapController.spacing * (i + SnapController.widthOffset),
                     SnapController.spacing * (j + SnapController.heightOffset), 1.0f);
-             Instantiate(prefab, position, Quaternion.identity);
+             var box = Instantiate(prefab, position, Quaternion.identity);
+             box.transform.parent = gameObject.transform;
             }
         }
     }

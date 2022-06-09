@@ -12,10 +12,12 @@ public class SnapController : MonoBehaviour
     public static float spacing = 0.65f;
     public static float widthOffset = -7.5f;
     public static float heightOffset = -1.2f;
+    private bool[,] grid;
 
 
     private void Start()
     {
+        grid = new bool[height, width];
         foreach (var draggable in draggableObjects)
         {
             draggable.dragEndedCallback = OnDragEnded;
@@ -51,10 +53,33 @@ public class SnapController : MonoBehaviour
             i++;
         }
 
-        if (closestSnap != null && distance <= maxDistance)
+        // grid too far or no spots left
+        if (closestSnap == null || distance > maxDistance)
         {
-            dragObject.transform.localPosition = (Vector3)closestSnap;
-            Debug.Log($"Snapping on {currX} {currY}");
+            return;
         }
+
+        var temp = grid;
+
+        foreach (var dot in BlockObject.Dots)
+        {
+            var posX = (int)(currY + dot.x);
+            var posY = (int)(currX + dot.y);
+            // Debug.Log($"Block is on {posX} {posY}");
+
+            if (posY >= height || posX >= height || temp[posX,posY])
+            {
+                return;
+            }
+
+            temp[posX, posY] = true;
+        }
+
+        // Block fits
+        Debug.Log($"Snapping on {currX} {currY}");
+        
+        grid = temp;
+        dragObject.transform.localPosition = (Vector3)closestSnap;
+        dragObject.isSnapped = true;
     }
 }
