@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TimerController : MonoBehaviour
 {
     public float timeStart = 60;
-    public Text textBox;
+    public TextMeshPro textBox;
 
     void Start()
     {

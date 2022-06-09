@@ -9,8 +9,8 @@ public class SnapController : MonoBehaviour
     public List<Vector2> snapPoints;
     public List<DragObject> draggableObjects;
     public float maxDistance = 0.9f;
-    public static float spacing = 0.84f;
-    public static float widthOffset = -8.6f;
+    public static float spacing = 0.65f;
+    public static float widthOffset = -7.5f;
     public static float heightOffset = -1.2f;
 
 
