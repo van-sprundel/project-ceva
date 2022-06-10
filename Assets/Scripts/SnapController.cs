@@ -59,25 +59,30 @@ public class SnapController : MonoBehaviour
             return;
         }
 
-        var temp = grid;
-
-        foreach (var dot in BlockObject.Dots)
+        var temp = (bool[,])grid.Clone();
+        var blockObject = dragObject.GetComponent<BlockObject>();
+        foreach (var dot in blockObject.GetDots())
         {
-            var posX = (int)(currY + dot.x);
-            var posY = (int)(currX + dot.y);
+            var posX = currY + (int)dot.x;
+            var posY = currX + (int)dot.y;
             // Debug.Log($"Block is on {posX} {posY}");
 
-            if (posY >= height || posX >= height || temp[posX,posY])
+            if (posY < 0 ||
+                posX < 0 ||
+                posY >= height ||
+                posX >= height ||
+                grid[posX, posY])
             {
+                Debug.Log($"Position not possible, ending loop, {posX} {posY} {grid[posX, posY]}");
                 return;
             }
 
             temp[posX, posY] = true;
         }
 
-        // Block fits
+        // Box fits
         Debug.Log($"Snapping on {currX} {currY}");
-        
+
         grid = temp;
         dragObject.transform.localPosition = (Vector3)closestSnap;
         dragObject.isSnapped = true;

@@ -7,7 +7,7 @@ public class DragObject : MonoBehaviour
     public DragEndedDelegate dragEndedCallback;
     
     public bool isSnapped = false;
-    private bool isDragged = false;
+    public bool isDragged = false;
     private Vector3 mOffset;
     private float mZCoord;
 

@@ -14,10 +14,12 @@ public class GridCreator : MonoBehaviour
         {
             for (var j = 0; j < width; j++)
             {
-                var position = new Vector3(SnapController.spacing * (i + SnapController.widthOffset),
-                    SnapController.spacing * (j + SnapController.heightOffset), 1.0f);
-             var box = Instantiate(prefab, position, Quaternion.identity);
-             box.transform.parent = gameObject.transform;
+                var position = new Vector3(
+                    SnapController.spacing * (i + SnapController.widthOffset),
+                    SnapController.spacing * (j + SnapController.heightOffset),
+                    1.0f);
+                var box = Instantiate(prefab, position, Quaternion.identity);
+                box.transform.parent = gameObject.transform;
             }
         }
     }

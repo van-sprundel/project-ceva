@@ -1,26 +1,63 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+
 public class BlockObject : MonoBehaviour
 {
+    public Shape ShapeSelector;
     public GameObject prefab;
+
     // dots are offsets from the root block
-    public static List<Vector2> Dots = new()
-    {
-        new Vector2(0,0),
-        new Vector2(0,1)
-    };
+    public static List<Vector2> Dots;
 
     private void Start()
     {
+        Dots = GetDots();
         foreach (var dot in Dots)
         {
-            if (dot == Vector2.zero) {
+            if (dot == Vector2.zero)
+            {
                 continue;
             }
-           var block = Instantiate(prefab, ((Vector3)dot*SnapController.spacing)+transform.localPosition, Quaternion.identity);
-           block.transform.parent = gameObject.transform;
+
+            var position = (Vector3)dot * SnapController.spacing + transform.localPosition;
+
+            var block = Instantiate(
+                prefab,
+                position,
+                Quaternion.identity);
+
+            block.transform.parent = gameObject.transform;
         }
+    }
+
+    public List<Vector2> GetDots()
+    {
+        switch (ShapeSelector)
+        {
+            case Shape.Corner:
+                return new List<Vector2>()
+                {
+                    new(0, 0),
+                    new(0, 1),
+                    new(1, 0)
+                };
+            case Shape.Plus:
+                return new List<Vector2>()
+                {
+                    new(0, 0),
+                    new(0, 1),
+                    new(1, 0),
+                    new(-1, 0),
+                    new(0, -1),
+                };
+        }
+
+        return new List<Vector2>();
+    }
+
+    public enum Shape
+    {
+        Corner,
+        Plus
     }
 }
