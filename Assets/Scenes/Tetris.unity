@@ -259,6 +259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: L Block (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2346229361903020285, guid: e51af0ee19c14c5488a78a166edb1710, type: 3}
+      propertyPath: ShapeSelector
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e51af0ee19c14c5488a78a166edb1710, type: 3}
@@ -910,6 +914,10 @@ PrefabInstance:
     - target: {fileID: 2346229361903020284, guid: e51af0ee19c14c5488a78a166edb1710, type: 3}
       propertyPath: m_Name
       value: L Block (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346229361903020285, guid: e51af0ee19c14c5488a78a166edb1710, type: 3}
+      propertyPath: ShapeSelector
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -1712,6 +1720,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: L Block (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2346229361903020285, guid: e51af0ee19c14c5488a78a166edb1710, type: 3}
+      propertyPath: ShapeSelector
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e51af0ee19c14c5488a78a166edb1710, type: 3}
@@ -1854,6 +1866,10 @@ PrefabInstance:
     - target: {fileID: 2346229361903020284, guid: e51af0ee19c14c5488a78a166edb1710, type: 3}
       propertyPath: m_Name
       value: L Block (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346229361903020285, guid: e51af0ee19c14c5488a78a166edb1710, type: 3}
+      propertyPath: ShapeSelector
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -2194,6 +2210,10 @@ PrefabInstance:
     - target: {fileID: 2346229361903020284, guid: e51af0ee19c14c5488a78a166edb1710, type: 3}
       propertyPath: m_Name
       value: L Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346229361903020285, guid: e51af0ee19c14c5488a78a166edb1710, type: 3}
+      propertyPath: ShapeSelector
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

@@ -12,7 +12,7 @@ public class SnapController : MonoBehaviour
     public static float spacing = 0.65f;
     public static float widthOffset = -7.5f;
     public static float heightOffset = -1.2f;
-    private bool[,] _grid;
+    public static bool[,] _grid;
     
 
     private void Start()
