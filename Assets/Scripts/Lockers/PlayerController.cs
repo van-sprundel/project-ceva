@@ -23,7 +23,7 @@ public struct RackData
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody _rb;
-    public float speed = 200f;
+    public float speed = 400f;
     public UnityEvent<RackData> headBang;
 
     public void Awake()
@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
             var scriptOther = other.gameObject.GetComponent<Rack>();
             // Event pushen
             headBang.Invoke(new RackData { number = scriptOther.number, color = scriptOther.color, letter = scriptOther.letter });
-            
         }
     }
 
