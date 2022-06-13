@@ -13,10 +13,11 @@ public class SnapController : MonoBehaviour
     public static float widthOffset = -7.5f;
     public static float heightOffset = -1.2f;
     private bool[,] _grid;
-
+    
 
     private void Start()
     {
+        draggableObjects = new List<DragObject>(FindObjectsOfType<DragObject>());
         _grid = new bool[height, width];
         foreach (var draggable in draggableObjects)
         {

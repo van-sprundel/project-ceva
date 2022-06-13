@@ -67,6 +67,14 @@ public class BlockObject : MonoBehaviour
                     new(1, -1),
                     new(2, -1),
                 };
+            case Shape.L:
+                return new List<Vector2>()
+                {
+                    new(0, 0),
+                    new(1, 0),
+                    new(0, 1),
+                    new(0, 2),
+                };
         }
 
         return new List<Vector2>();
@@ -77,6 +85,7 @@ public class BlockObject : MonoBehaviour
         Corner,
         Plus,
         Square,
-        Z
+        Z,
+        L
     }
 }
