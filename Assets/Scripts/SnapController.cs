@@ -12,12 +12,12 @@ public class SnapController : MonoBehaviour
     public static float spacing = 0.65f;
     public static float widthOffset = -7.5f;
     public static float heightOffset = -1.2f;
-    private bool[,] grid;
+    private bool[,] _grid;
 
 
     private void Start()
     {
-        grid = new bool[height, width];
+        _grid = new bool[height, width];
         foreach (var draggable in draggableObjects)
         {
             draggable.dragEndedCallback = OnDragEnded;
@@ -59,7 +59,7 @@ public class SnapController : MonoBehaviour
             return;
         }
 
-        var temp = (bool[,])grid.Clone();
+        var temp = (bool[,])_grid.Clone();
         var blockObject = dragObject.GetComponent<BlockObject>();
         foreach (var dot in blockObject.GetDots())
         {
@@ -71,9 +71,9 @@ public class SnapController : MonoBehaviour
                 posX < 0 ||
                 posY >= height ||
                 posX >= height ||
-                grid[posX, posY])
+                _grid[posX, posY])
             {
-                Debug.Log($"Position not possible, ending loop, {posX} {posY} {grid[posX, posY]}");
+                Debug.Log($"Position not possible, ending loop, {posX} {posY} {_grid[posX, posY]}");
                 return;
             }
 
@@ -83,7 +83,7 @@ public class SnapController : MonoBehaviour
         // Box fits
         Debug.Log($"Snapping on {currX} {currY}");
 
-        grid = temp;
+        _grid = temp;
         dragObject.transform.localPosition = (Vector3)closestSnap;
         dragObject.isSnapped = true;
     }
