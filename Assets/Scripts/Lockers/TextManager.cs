@@ -7,48 +7,37 @@ using UnityEngine.UI;
 public class TextManager : MonoBehaviour
 {
     private Canvas canvas;
-    private Dictionary<string, Text> orders;
+    private List<Text> orders;
     // Start is called before the first frame update
     void Start()
     {
         canvas = GetComponent<Canvas>();
-        orders = new Dictionary<string, Text>();
-        var colors = new Queue<(string, Color)>(getRandomOrders().Distinct().Take(9)); 
+        orders = new List<Text>();
         foreach (var obj in GameObject.FindGameObjectsWithTag("Order"))
         {
             var text = obj.GetComponent<Text>();
-            var (x, y) = colors.Dequeue();
-            text.text = x;
-            var textColor = y switch
-            {
-                Color.Red => UnityEngine.Color.red,
-                Color.Blue => UnityEngine.Color.blue,
-                Color.Green => UnityEngine.Color.green,
-                _ => UnityEngine.Color.red,
-            };
-            text.color = textColor;
-        }
-        
+            orders.Add(text);
+
+        }        
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateLabel(int index, RackData data, bool active)
     {
-        
-    }
-
-    IEnumerable<(string, Color)> getRandomOrders()
-    {
-        
-        var rnd = new System.Random();
-        
-        while (true)
+        var text = orders[index];
+        text.text = data.ToString();
+        var textColor = data.color switch
         {
-            var color = rnd.Next(0, 3);
-            var number = rnd.Next(0, 3);
-            var letter = rnd.Next(0, 6);
-            var code = $"{(Letter)letter}{number + 1}";
-            yield return (code, (Color)color);
-        }
+            Color.Red => UnityEngine.Color.red,
+            Color.Blue => UnityEngine.Color.blue,
+            Color.Green => UnityEngine.Color.green,
+            _ => UnityEngine.Color.red,
+        };
+        text.color = active ? textColor : UnityEngine.Color.gray;
+        text.fontStyle = active ? FontStyle.Bold : FontStyle.Italic;
     }
+
+
+
+
+
 }

@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 2157039236585873100}
   - component: {fileID: 2157039236585873101}
   - component: {fileID: 2157039236585873102}
+  - component: {fileID: 705162415525990253}
   m_Layer: 0
   m_Name: Pole
   m_TagString: Untagged
@@ -271,3 +272,15 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &705162415525990253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2157039236585873103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf94299e7120e2458c3f123c5a81e0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
