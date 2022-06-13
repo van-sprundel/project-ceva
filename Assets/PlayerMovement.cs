@@ -5,44 +5,22 @@ using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 10f;
-    public float rotationSpeed;
-    private Rigidbody body;
-    public UnityEvent leftDoorTouched;
-    public UnityEvent rightDoorTouched;
+    public CharacterController controller;
+    float horizontalMove = 0f;
+    public float runSpeed = 40f;
+    bool jump = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        body = GetComponent<Rigidbody>();
+    void Update() {
+       horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
+         // jump with space
+        if (Input.GetButtonDown("Jump")) {
+            jump = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // let player walk on x axis with rigidbody
-        float x = Input.GetAxis("Horizontal");
-
-        Vector3 movement = new Vector3(x, 0.0f, 0.0f);
-        movement.Normalize();
-
-        // transform.Translate(movement * speed * Time.deltaTime, Space.World);
-        body.velocity = movement * speed;
-
-        if(movement != Vector3.zero) {
-            Quaternion rotation = Quaternion.LookRotation(movement, Vector3.up);
-
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-            //transform.forward = movement;
-        }
-
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("LeftDoor")) {
-            leftDoorTouched.Invoke();
-        } else if (other.gameObject.CompareTag("RightDoor")) {
-            rightDoorTouched.Invoke();
-        }
+    void FixedUpdate() {
+        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+        jump = false;
     }
 }
