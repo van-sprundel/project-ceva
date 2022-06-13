@@ -9,21 +9,15 @@ public struct RackData
     public int number;
     public Color color;
     public Letter letter;
+
+
     
     public override string ToString()
     {
-        return $"{letter}{number + 1}";
+        return $"{letter}{number}";
     }
 
-    public override bool Equals(object obj)
-    {
-        return obj.GetHashCode() == GetHashCode();
-    }
 
-    public override int GetHashCode()
-    {
-        return number^(int)color^(int)letter;
-    }
 }
 
 public class PlayerController : MonoBehaviour

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
         {
             dictionary.Add(order.order, (true, order.i));
             manager.UpdateLabel(order.i, order.order, true);
+
         }
     }
     public void handleHeadBang(RackData rackData)
@@ -22,10 +23,14 @@ public class GameManager : MonoBehaviour
         Debug.Log($"{rackData.number}, {rackData.letter}, {rackData.color}: Collided");
         if (dictionary.ContainsKey(rackData))
         {
-            var item = dictionary[rackData];
-            dictionary[rackData] = (false, item.Item2);
-            manager.UpdateLabel(item.Item2, rackData, false);
-
+            var v = dictionary[rackData];
+            dictionary[rackData] = (false, v.Item2);
+            manager.UpdateLabel(v.Item2, rackData, false);
+            if (dictionary.Values.All(x => x.Item1 == false))
+            {
+                Debug.Log("You won!");
+                //TODO: Show victory screen.
+            }
         }
     }
 
@@ -39,7 +44,7 @@ public class GameManager : MonoBehaviour
             var color = rnd.Next(0, 3);
             var number = rnd.Next(0, 3);
             var letter = rnd.Next(0, 6);
-            yield return new RackData { number = number, color = (Color)color, letter = (Letter)letter };
+            yield return new RackData { number = number + 1, color = (Color)color, letter = (Letter)letter };
         }
     }
 }
