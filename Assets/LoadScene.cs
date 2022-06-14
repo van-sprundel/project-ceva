@@ -7,9 +7,12 @@ public class LoadScene : MonoBehaviour
 {
     // public Scene 
     public string sceneName;
+    private bool isEntered = false;
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Player") {
+        if (collision.gameObject.CompareTag("Player") && !isEntered)
+        {
+            isEntered = true;
             SceneManager.LoadScene(sceneName);
         }
     }
