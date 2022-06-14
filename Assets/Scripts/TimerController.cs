@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TimerController : MonoBehaviour
 {
-    public float timer = 30;
+    public float timer = 60;
     public TextMeshPro textBox;
     private bool _done;
 
@@ -28,7 +28,7 @@ public class TimerController : MonoBehaviour
         var score = EvaluateScore();
         PlayerPrefs.SetFloat("TetrisHighScore", score);
         PlayerPrefs.Save();
-        SceneManager.LoadScene("TetrisFinish");
+        SceneManager.LoadScene("TetrisEnd");
     }
 
     private int EvaluateScore()
