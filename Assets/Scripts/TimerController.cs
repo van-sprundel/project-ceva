@@ -28,6 +28,7 @@ public class TimerController : MonoBehaviour
         var score = EvaluateScore();
         PlayerPrefs.SetFloat("TetrisHighScore", score);
         PlayerPrefs.Save();
+        SetGameDone.loadTruckDone = true;
         SceneManager.LoadScene("TetrisEnd");
     }
 

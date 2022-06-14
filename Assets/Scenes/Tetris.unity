@@ -2661,6 +2661,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 430617418}
     m_Modifications:
+    - target: {fileID: 9135472005504799253, guid: d138976835a673f488994231d23c02f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135472005504799253, guid: d138976835a673f488994231d23c02f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.89
+      objectReference: {fileID: 0}
     - target: {fileID: 9135472006926711129, guid: d138976835a673f488994231d23c02f5, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -2730,6 +2738,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 430617418}
     m_Modifications:
+    - target: {fileID: 1207233104647211225, guid: a80ead8e98bc5e94f870c8a5f15bd8cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207233104647211225, guid: a80ead8e98bc5e94f870c8a5f15bd8cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1790468337847053755, guid: a80ead8e98bc5e94f870c8a5f15bd8cb, type: 3}
       propertyPath: m_Name
       value: Corner block
