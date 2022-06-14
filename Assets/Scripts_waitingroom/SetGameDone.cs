@@ -9,16 +9,15 @@ public class SetGameDone : MonoBehaviour
 
     public static bool loadTruckDone = false;
     public static bool circlePickOrderDone = false;
-    public Material done;
 
     public void SetDoneTruck()
     {
-        circleLoadTruck.GetComponent<MeshRenderer>().material = done;
+        circleLoadTruck.GetComponent<SpriteRenderer>().color = UnityEngine.Color.green;
     }
     
     public void SetDoneOrder()
     {
-        circlePickOrder.GetComponent<MeshRenderer>().material = done;
+        circlePickOrder.GetComponent<SpriteRenderer>().color = UnityEngine.Color.green;;
     }
 
     // Update is called once per frame

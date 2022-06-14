@@ -23,7 +23,7 @@ public class TimerScript : MonoBehaviour
     {
         running = false;
         _TextMeshPro.text = "You won! Score: " + GetTime();
-        SetGameDone.loadTruckDone = true;
+        SetGameDone.circlePickOrderDone = true;
     }
 
     private string GetTime() => Math.Round(_startTime).ToString(CultureInfo.CurrentCulture);
