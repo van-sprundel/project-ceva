@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Waiting.unity
     guid: 9326ea7c0673eea42bd96b4a95ce45ac
+  - enabled: 1
+    path: Assets/Scenes/TetrisBegin.unity
+    guid: 9b95381036abae040985a2d84d201114
   m_configObjects: {}

@@ -75,6 +75,45 @@ public class BlockObject : MonoBehaviour
                     new(0, 1),
                     new(0, 2),
                 };
+            case Shape.ReverseL:
+                return new List<Vector2>()
+                {
+                    new(0, 0),
+                    new(-1, 0),
+                    new(0, 1),
+                    new(0, 2),
+                };
+            case Shape.ReverseCorner:
+                return new List<Vector2>()
+                {
+                    new(0, 0),
+                    new(0, 1),
+                    new(-1, 0)
+                };
+            case Shape.UpsideDownCorner:
+                return new List<Vector2>()
+                {
+                    new(0, 0),
+                    new(0, -1),
+                    new(-1, 0)
+                };
+            case Shape.Line:
+                return new List<Vector2>()
+                {
+                    new(-1, 0),
+                    new(0, 0),
+                    new(1, 0),
+                    new(2, 0),
+                };
+            case Shape.Stair:
+                return new List<Vector2>()
+                {
+                    new(0, 0),
+                    new(0, 1),
+                    new(-2, 0),
+                    new(1, 0),
+                    new(1, 1),
+                };
         }
 
         return new List<Vector2>();
@@ -86,6 +125,11 @@ public class BlockObject : MonoBehaviour
         Plus,
         Square,
         Z,
-        L
+        L,
+        ReverseL,
+        ReverseCorner,
+        UpsideDownCorner,
+        Stair,
+        Line
     }
 }
