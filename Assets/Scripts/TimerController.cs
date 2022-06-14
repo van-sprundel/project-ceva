@@ -1,39 +1,48 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TimerController : MonoBehaviour
 {
-    public float timeStart = 30;
+    public float timer = 60;
     public TextMeshPro textBox;
-    private bool done;
+    private bool _done;
 
-    private string GetTime() => Mathf.Round(timeStart).ToString(CultureInfo.CurrentCulture);
+    private string GetTime() => Mathf.Round(timer).ToString(CultureInfo.CurrentCulture);
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        timeStart -= Time.deltaTime;
+        timer -= Time.deltaTime;
         textBox.text = "Time: " + GetTime();
-        if (timeStart <= 0.0 &&!done)
+        if (timer <= 0.0 && !_done)
         {
-            done =true;
-            //TODO go to end scene and send score
-            var squares = SnapController._grid;
-            var squaresFilled = 0;
-            foreach (var square in squares)
-            {
-                if (square)
-                {
-                    squaresFilled += 1;
-                }
-            }
-            Debug.Log($"Squares filled: {squaresFilled}");
+            _done = true;
+            SaveScore();
         }
+    }
+
+    public void SaveScore()
+    {
+        var score = EvaluateScore();
+        PlayerPrefs.SetFloat("TetrisHighScore", score);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("TetrisEnd");
+    }
+
+    private int EvaluateScore()
+    {
+        var squares = SnapController._grid;
+        var squaresFilled = 0;
+        foreach (var square in squares)
+        {
+            if (square)
+            {
+                squaresFilled += 1;
+            }
+        }
+
+        return squaresFilled + (int)timer;
     }
 }

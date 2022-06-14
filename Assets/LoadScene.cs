@@ -17,4 +17,10 @@ public class LoadScene : MonoBehaviour
             SceneManager.LoadScene(sceneName);
         }
     }
+
+    public void LoadMainScreen()
+    {
+        Debug.Log("Button cl");
+        SceneManager.LoadScene("2D waiting");
+    }
 }
