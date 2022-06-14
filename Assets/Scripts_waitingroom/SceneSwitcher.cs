@@ -14,6 +14,11 @@ public class SceneSwitcher : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName:"Scenes/Lockers");
     }
+    
+    public void Home()
+    {
+        SceneManager.LoadScene(sceneName:"Scenes/2D waiting");
+    }
 
     public void Back()
     {

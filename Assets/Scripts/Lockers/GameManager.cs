@@ -2,22 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public Dictionary<RackData, (bool, int)> dictionary;
     public TextManager manager;
+    public TimerScript script;
+    public float timescale = 1f;
+    public Button button;
 
     public void Start()
     {
+        button.gameObject.SetActive(false);
+        Time.timeScale = timescale;
+
         dictionary = new Dictionary<RackData, (bool, int)>();
         foreach (var order in getRandomOrders().Distinct().Take(9).Select((order, i) => (order, i))) 
         {
             dictionary.Add(order.order, (true, order.i));
             manager.UpdateLabel(order.i, order.order, true);
-
         }
     }
+
+    public void Finish()
+    {
+        this.script.StopRunning();
+    }
+    
     public void handleHeadBang(RackData rackData)
     {
         Debug.Log($"{rackData.number}, {rackData.letter}, {rackData.color}: Collided");
@@ -29,7 +42,9 @@ public class GameManager : MonoBehaviour
             if (dictionary.Values.All(x => x.Item1 == false))
             {
                 Debug.Log("You won!");
-                //TODO: Show victory screen.
+                Time.timeScale = 0;
+                button.gameObject.SetActive(true);
+                Finish();
             }
         }
     }

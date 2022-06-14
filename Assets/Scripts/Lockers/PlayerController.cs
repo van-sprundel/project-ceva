@@ -10,14 +10,10 @@ public struct RackData
     public Color color;
     public Letter letter;
 
-
-    
     public override string ToString()
     {
         return $"{letter}{number}";
     }
-
-
 }
 
 public class PlayerController : MonoBehaviour
