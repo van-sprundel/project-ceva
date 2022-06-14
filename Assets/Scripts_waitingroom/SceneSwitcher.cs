@@ -19,4 +19,10 @@ public class SceneSwitcher : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
+
+    public void WaitingRoom()
+    {
+        SceneManager.LoadScene(sceneName:"Scenes/2D waiting");
+    }
+    
 }

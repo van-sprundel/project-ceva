@@ -17,15 +17,9 @@ public class LoadScene : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void LoadMainScreen()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("Button cl");
+        SceneManager.LoadScene("2D waiting");
     }
 }
