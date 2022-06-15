@@ -11,7 +11,7 @@ public class LoadScore : MonoBehaviour
     void Start()
     {
         _textMeshPro = GetComponent<TextMeshProUGUI>();
-        var score = PlayerPrefs.GetFloat("TetrisHighScore");
+        var score = PlayerPrefs.GetFloat("loadTruckScore");
         _textMeshPro.text = score.ToString(CultureInfo.CurrentCulture);
     }
 }

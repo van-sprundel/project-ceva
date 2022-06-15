@@ -24,6 +24,10 @@ public class TimerScript : MonoBehaviour
         running = false;
         _TextMeshPro.text = "You won! Score: " + GetTime();
         SetGameDone.circlePickOrderDone = true;
+
+        PlayerPrefs.SetFloat("pickOrderScore", (float)Math.Round(_startTime));
+        PlayerPrefs.Save();
+        SetGameDone.loadTruckDone = true;
     }
 
     private string GetTime() => Math.Round(_startTime).ToString(CultureInfo.CurrentCulture);
