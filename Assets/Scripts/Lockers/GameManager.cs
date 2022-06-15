@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
             if (dictionary.Values.All(x => x.Item1 == false))
             {
                 Debug.Log("You won!");
-                Time.timeScale = 0;
+                Time.timeScale = 0f;
                 button.gameObject.SetActive(true);
                 Finish();
             }

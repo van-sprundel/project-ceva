@@ -6,17 +6,22 @@ public class SetGameDone : MonoBehaviour
 {
     public GameObject circleLoadTruck;
     public GameObject circlePickOrder;
+    
+    public LoadScene loadSceneTruck;
+    public LoadScene loadSceneOrderPick;
 
     public static bool loadTruckDone = false;
     public static bool circlePickOrderDone = false;
 
     public void SetDoneTruck()
     {
+        loadSceneTruck.DisableDoor();
         circleLoadTruck.GetComponent<SpriteRenderer>().color = UnityEngine.Color.green;
     }
     
     public void SetDoneOrder()
     {
+        loadSceneOrderPick.DisableDoor();
         circlePickOrder.GetComponent<SpriteRenderer>().color = UnityEngine.Color.green;;
     }
 

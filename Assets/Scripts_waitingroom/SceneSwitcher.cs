@@ -17,6 +17,7 @@ public class SceneSwitcher : MonoBehaviour
     
     public void Home()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName:"Scenes/2D waiting");
     }
 

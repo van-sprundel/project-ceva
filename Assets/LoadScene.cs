@@ -9,13 +9,19 @@ public class LoadScene : MonoBehaviour
     // public Scene 
     public string sceneName;
     private bool isEntered = false;
+    public bool isActive = true;
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag("Player") && !isEntered)
-        {
-            isEntered = true;
-            SceneManager.LoadScene(sceneName);
-        }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!isActive) return;
+        if (!collision.gameObject.CompareTag("Player") || isEntered) return;
+        isEntered = true;
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void DisableDoor()
+    {
+        isActive = false;
     }
 
     public void LoadMainScreen()
