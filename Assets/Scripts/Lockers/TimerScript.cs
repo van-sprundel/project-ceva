@@ -23,9 +23,6 @@ public class TimerScript : MonoBehaviour
         running = false;
         _TextMeshPro.text = "You won! Time: " + GetTime();
         SetGameDone.circlePickOrderDone = true;
-
-        // timeElapsed.Invoke((float)Math.Round(_startTime));
-        SetGameDone.loadTruckDone = true;
         return (float)Math.Round(_startTime);
     }
 

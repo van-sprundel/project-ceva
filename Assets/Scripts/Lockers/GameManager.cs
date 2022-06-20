@@ -49,9 +49,11 @@ public class GameManager : MonoBehaviour
     {
         var score = time * CalculateCoefficient();
         Debug.Log("Saving score: "+ score);
-        PlayerPrefs.SetFloat("pickOrderScore", (float)Math.Round(score));
-        PlayerPrefs.Save();
-
+        if (PlayerPrefs.GetFloat("pickOrderScore") < score)
+        {
+            PlayerPrefs.SetFloat("pickOrderScore", (float)Math.Round(score));
+            PlayerPrefs.Save();
+        }
     }
 
     public void Start()
