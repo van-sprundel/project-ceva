@@ -47,9 +47,11 @@ public class GameManager : MonoBehaviour
 
     public void SaveScore(float time)
     {
-        Debug.Log("Saving score: "+time);
-        PlayerPrefs.SetFloat("pickOrderScore", (float)Math.Round(time));
+        var score = time * CalculateCoefficient();
+        Debug.Log("Saving score: "+ score);
+        PlayerPrefs.SetFloat("pickOrderScore", (float)Math.Round(score));
         PlayerPrefs.Save();
+
     }
 
     public void Start()
@@ -67,7 +69,8 @@ public class GameManager : MonoBehaviour
 
     public void Finish()
     {
-        this.script.StopRunning();
+        var time = this.script.StopRunning();
+        SaveScore(time);
     }
     
     public void handleHeadBang(RackData rackData)

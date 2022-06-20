@@ -5170,7 +5170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 406912811}
-  script: {fileID: 0}
+  script: {fileID: 984284873}
   timescale: 1
   button: {fileID: 241683802}
 --- !u!4 &1312087312

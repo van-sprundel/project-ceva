@@ -18,14 +18,15 @@ public class TimerScript : MonoBehaviour
         running = true;
     }
 
-    public void StopRunning()
+    public float StopRunning()
     {
         running = false;
-        _TextMeshPro.text = "You won! Score: " + GetTime();
+        _TextMeshPro.text = "You won! Time: " + GetTime();
         SetGameDone.circlePickOrderDone = true;
 
-        timeElapsed.Invoke((float)Math.Round(_startTime));
+        // timeElapsed.Invoke((float)Math.Round(_startTime));
         SetGameDone.loadTruckDone = true;
+        return (float)Math.Round(_startTime);
     }
 
     private string GetTime() => Math.Round(_startTime).ToString(CultureInfo.CurrentCulture);
