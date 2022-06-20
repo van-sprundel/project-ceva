@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DialogueText : MonoBehaviour
 {
+    public AudioSource AudioSource;
     public Button button;
     private string text;
 
@@ -14,6 +15,7 @@ public class DialogueText : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        AudioSource.volume = 0.1f;
         button.gameObject.SetActive(false);
         textMeshPro = GetComponent<TextMeshPro>();
         text = textMeshPro.text;
@@ -35,6 +37,7 @@ public class DialogueText : MonoBehaviour
         for (var i = 0; i < text.Length + 1; i++)
         {
             textMeshPro.text = text.Substring(0, i);
+            AudioSource.Play();
             yield return new WaitForSeconds(0.04f);
         }
 

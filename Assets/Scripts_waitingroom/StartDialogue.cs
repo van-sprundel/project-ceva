@@ -22,11 +22,19 @@ public class StartDialogue : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        var playerName = PlayerPrefs.GetString("Name");
-        _textRows[0] = _textRows[0].Substring(0, _textRows[0].Length - 1) + ", " + playerName + "!";
-
-        StartCoroutine(UpdateText());
+        if (!DialogueFinished)
+        {
+            var playerName = PlayerPrefs.GetString("Name");
+            _textRows[0] = _textRows[0].Substring(0, _textRows[0].Length - 1) + ", " + playerName + "!";
+            backgroundImage.SetActive(true);
+            StartCoroutine(UpdateText());
+        }
+        else
+        {
+            backgroundImage.SetActive(false);
+        }
     }
+
 
     private IEnumerator UpdateText()
     {
@@ -37,12 +45,11 @@ public class StartDialogue : MonoBehaviour
                 currentText.text = row.Substring(0, i);
                 yield return new WaitForSeconds(0.05f);
             }
-
             yield return new WaitForSeconds(2.0f);
         }
+        DialogueFinished = true;
 
         currentText.text = "";
         backgroundImage.SetActive(false);
-        DialogueFinished = true;
     }
 }
