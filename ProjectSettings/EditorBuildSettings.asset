@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/2D waiting.unity
+    guid: e25b1048acf9f444f96833eb547d1fdb
+  - enabled: 1
     path: Assets/Scenes/MainScreen.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -14,9 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lockers.unity
     guid: 5487ff0702788174a87bf0c8ddf64321
-  - enabled: 1
-    path: Assets/Scenes/2D waiting.unity
-    guid: e25b1048acf9f444f96833eb547d1fdb
   - enabled: 1
     path: Assets/Scenes/Waiting.unity
     guid: 9326ea7c0673eea42bd96b4a95ce45ac
