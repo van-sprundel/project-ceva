@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -23,18 +22,17 @@ public enum Letter
 
 public class Rack : MonoBehaviour
 {
-    private TextMeshPro numberText;
-    private List<Box> boxes;
-
     public int number;
     public Letter letter;
     public Color color;
     public Material green;
     public Material blue;
     public Material red;
-   
+    private List<Box> boxes;
+    private TextMeshPro numberText;
 
-    void Start()
+
+    private void Start()
     {
         numberText = GetComponentInChildren<TextMeshPro>();
         numberText.text = number.ToString();
@@ -46,14 +44,11 @@ public class Rack : MonoBehaviour
             Color.Green => green,
             _ => red
         };
-        foreach (var box in boxes) {
-            box.GetComponent<MeshRenderer>().material = material;
-        }
+        foreach (var box in boxes) box.GetComponent<MeshRenderer>().material = material;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
     }
 }

@@ -1,36 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class SnapController : MonoBehaviour
 {
-    public int width = 8, height = 8;
-    public List<Vector2> snapPoints;
-    public List<DragObject> draggableObjects;
-    public float maxDistance = 0.9f;
     public static float spacing = 0.65f;
     public static float widthOffset = -7.5f;
     public static float heightOffset = -1.2f;
     public static bool[,] _grid;
-    
+    public int width = 8, height = 8;
+    public List<Vector2> snapPoints;
+    public List<DragObject> draggableObjects;
+    public float maxDistance = 0.9f;
+
 
     private void Start()
     {
         draggableObjects = new List<DragObject>(FindObjectsOfType<DragObject>());
         _grid = new bool[height, width];
-        foreach (var draggable in draggableObjects)
-        {
-            draggable.dragEndedCallback = OnDragEnded;
-        }
+        foreach (var draggable in draggableObjects) draggable.dragEndedCallback = OnDragEnded;
 
         for (var i = 0; i < height; i++)
-        {
-            for (var j = 0; j < width; j++)
-            {
-                snapPoints.Add(new Vector2(spacing * (i + widthOffset), spacing * (j + heightOffset)));
-            }
-        }
+        for (var j = 0; j < width; j++)
+            snapPoints.Add(new Vector2(spacing * (i + widthOffset), spacing * (j + heightOffset)));
     }
 
     private void OnDragEnded(DragObject dragObject)
@@ -55,10 +46,7 @@ public class SnapController : MonoBehaviour
         }
 
         // grid too far or no spots left
-        if (closestSnap == null || distance > maxDistance)
-        {
-            return;
-        }
+        if (closestSnap == null || distance > maxDistance) return;
 
         var temp = (bool[,])_grid.Clone();
         var blockObject = dragObject.GetComponent<BlockObject>();

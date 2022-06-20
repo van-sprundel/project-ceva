@@ -1,15 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TextManager : MonoBehaviour
 {
     private Canvas canvas;
+
     private List<Text> orders;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         canvas = GetComponent<Canvas>();
         orders = new List<Text>();
@@ -17,8 +17,7 @@ public class TextManager : MonoBehaviour
         {
             var text = obj.GetComponent<Text>();
             orders.Add(text);
-
-        }        
+        }
     }
 
     public void UpdateLabel(int index, RackData data, bool active)
@@ -30,14 +29,9 @@ public class TextManager : MonoBehaviour
             Color.Red => UnityEngine.Color.red,
             Color.Blue => UnityEngine.Color.blue,
             Color.Green => UnityEngine.Color.green,
-            _ => UnityEngine.Color.red,
+            _ => UnityEngine.Color.red
         };
         text.color = active ? textColor : UnityEngine.Color.gray;
         text.fontStyle = active ? FontStyle.Bold : FontStyle.Italic;
     }
-
-
-
-
-
 }

@@ -1,24 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class SceneSwitcher : MonoBehaviour
 {
     // Start is called before the first frame update
     public void PlayTetris()
     {
-        SceneManager.LoadScene(sceneName:"Scenes/Tetris");
+        SceneManager.LoadScene("Scenes/Tetris");
     }
-    
+
     public void PlayLockers()
     {
-        SceneManager.LoadScene(sceneName:"Scenes/Lockers");
+        SceneManager.LoadScene("Scenes/Lockers");
     }
-    
+
     public void Home()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(sceneName:"Scenes/2D waiting");
+        SceneManager.LoadScene("Scenes/2D waiting");
     }
 
     public void Back()
@@ -28,7 +27,6 @@ public class SceneSwitcher : MonoBehaviour
 
     public void WaitingRoom()
     {
-        SceneManager.LoadScene(sceneName:"Scenes/2D waiting");
+        SceneManager.LoadScene("Scenes/2D waiting");
     }
-    
 }

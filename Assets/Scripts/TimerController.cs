@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class TimerController : MonoBehaviour
 {
-    private float timer = 60;
     public TextMeshPro textBox;
     private bool _done;
-
-    private string GetTime() => Mathf.Round(timer).ToString(CultureInfo.CurrentCulture);
+    private float timer = 60;
 
     // Update is called once per frame
     private void Update()
@@ -21,6 +19,11 @@ public class TimerController : MonoBehaviour
             _done = true;
             SaveScore();
         }
+    }
+
+    private string GetTime()
+    {
+        return Mathf.Round(timer).ToString(CultureInfo.CurrentCulture);
     }
 
     public void SaveScore()
@@ -37,12 +40,8 @@ public class TimerController : MonoBehaviour
         var squares = SnapController._grid;
         var squaresFilled = 0;
         foreach (var square in squares)
-        {
             if (square)
-            {
                 squaresFilled += 1;
-            }
-        }
 
         return squaresFilled + (int)timer;
     }

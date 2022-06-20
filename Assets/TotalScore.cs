@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class TotalScore : MonoBehaviour
 {
+    public static bool started;
+    public TMP_Text text;
     private float loadTruckScore;
     private float pickOrderScore;
-    public TMP_Text text;
-    public static bool started = false;
 
-    void Awake()
+    private void Awake()
     {
         if (!started)
         {
@@ -19,14 +17,12 @@ public class TotalScore : MonoBehaviour
             PlayerPrefs.SetFloat("loadTruckScore", 0);
         }
     }
-    
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         loadTruckScore = PlayerPrefs.GetFloat("loadTruckScore");
         pickOrderScore = PlayerPrefs.GetFloat("pickOrderScore");
         text.text = "Your Score: " + (loadTruckScore + pickOrderScore);
     }
-    
-    
 }

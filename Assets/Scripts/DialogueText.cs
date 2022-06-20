@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class DialogueText : MonoBehaviour
 {
     public Button button;
-    private TextMeshPro textMeshPro;
     private string text;
 
     private bool textDone;
+    private TextMeshPro textMeshPro;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         button.gameObject.SetActive(false);
         textMeshPro = GetComponent<TextMeshPro>();
@@ -30,9 +30,9 @@ public class DialogueText : MonoBehaviour
         }
     }
 
-    IEnumerator UpdateText()
+    private IEnumerator UpdateText()
     {
-        for (int i = 0; i < text.Length + 1; i++)
+        for (var i = 0; i < text.Length + 1; i++)
         {
             textMeshPro.text = text.Substring(0, i);
             yield return new WaitForSeconds(0.04f);

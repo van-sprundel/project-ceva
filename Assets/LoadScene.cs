@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class LoadScene : MonoBehaviour
 {
     // public Scene 
     public string sceneName;
-    private bool isEntered = false;
     public bool isActive = true;
+    private bool isEntered;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

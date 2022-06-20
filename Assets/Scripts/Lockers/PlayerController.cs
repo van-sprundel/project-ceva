@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
 
 public struct RackData
 {
@@ -18,17 +15,13 @@ public struct RackData
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody _rb;
     public float speed = 400f;
     public UnityEvent<RackData> headBang;
+    private Rigidbody _rb;
 
     public void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-    }
-    public void Move(Vector3 movement)
-    {
-        _rb.velocity = movement * speed;
     }
 
     public void OnCollisionEnter(Collision other)
@@ -37,12 +30,13 @@ public class PlayerController : MonoBehaviour
         {
             var scriptOther = other.gameObject.GetComponent<Rack>();
             // Event pushen
-            headBang.Invoke(new RackData { number = scriptOther.number, color = scriptOther.color, letter = scriptOther.letter });
+            headBang.Invoke(new RackData
+                { number = scriptOther.number, color = scriptOther.color, letter = scriptOther.letter });
         }
     }
 
-    
-
-    
-
+    public void Move(Vector3 movement)
+    {
+        _rb.velocity = movement * speed;
+    }
 }

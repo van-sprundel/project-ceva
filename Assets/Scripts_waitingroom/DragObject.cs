@@ -4,18 +4,12 @@ public class DragObject : MonoBehaviour
 {
     public delegate void DragEndedDelegate(DragObject dragObject);
 
+    public bool isSnapped;
+    public bool isDragged;
+
     public DragEndedDelegate dragEndedCallback;
-    
-    public bool isSnapped = false;
-    public bool isDragged = false;
     private Vector3 mOffset;
     private float mZCoord;
-
-    private void OnMouseUp()
-    {
-        isDragged = false;
-        dragEndedCallback(this);
-    }
 
     private void OnMouseDown()
     {
@@ -28,24 +22,27 @@ public class DragObject : MonoBehaviour
         mOffset = position - GetMouseAsWorldPoint();
     }
 
+    private void OnMouseDrag()
+    {
+        // if (isDragged)
+        if (isDragged && !isSnapped) transform.position = GetMouseAsWorldPoint() + mOffset;
+    }
+
+    private void OnMouseUp()
+    {
+        isDragged = false;
+        dragEndedCallback(this);
+    }
+
     private Vector3 GetMouseAsWorldPoint()
     {
         // Pixel coordinates of mouse (x,y)
-        Vector3 mousePoint = Input.mousePosition;
+        var mousePoint = Input.mousePosition;
 
         // z coordinate of game object on screen
         mousePoint.z = mZCoord;
 
         // Convert it to world points
         return Camera.main.ScreenToWorldPoint(mousePoint);
-    }
-
-    private void OnMouseDrag()
-    {
-        // if (isDragged)
-        if (isDragged && !isSnapped)
-        {
-            transform.position = GetMouseAsWorldPoint() + mOffset;
-        }
     }
 }
