@@ -7,8 +7,8 @@ using UnityEngine;
 using UnityEngine.Events;
 public class TimerScript : MonoBehaviour
 {
-    private TextMeshProUGUI _TextMeshPro;
-    public UnityEvent timeElapsed;
+    public TextMeshProUGUI _TextMeshPro;
+    public UnityEvent<float> timeElapsed;
     private bool running;
 
     private float _startTime = 150f;
@@ -16,7 +16,6 @@ public class TimerScript : MonoBehaviour
     void Start()
     {
         running = true;
-        _TextMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
     }
 
     public void StopRunning()
@@ -25,8 +24,7 @@ public class TimerScript : MonoBehaviour
         _TextMeshPro.text = "You won! Score: " + GetTime();
         SetGameDone.circlePickOrderDone = true;
 
-        PlayerPrefs.SetFloat("pickOrderScore", (float)Math.Round(_startTime));
-        PlayerPrefs.Save();
+        timeElapsed.Invoke((float)Math.Round(_startTime));
         SetGameDone.loadTruckDone = true;
     }
 
@@ -42,8 +40,6 @@ public class TimerScript : MonoBehaviour
             
             if (_startTime <= 0.0)
             {
-                // invoke event
-                timeElapsed.Invoke();
                 StopRunning();
             }
         }

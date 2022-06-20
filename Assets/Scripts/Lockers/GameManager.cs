@@ -1,17 +1,56 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    private const float MAX_DISTANCE = 17f;
+    
     public Dictionary<RackData, (bool, int)> dictionary;
     public TextManager manager;
     public TimerScript script;
     public float timescale = 1f;
     public Button button;
+
+    private (int x, int y) RackDataToCoordinate(RackData d)
+    {
+        return ((int)d.color, (int)d.letter);
+        // ((d.number - 1) * (d.color + 1), d.letter)
+    }
+    
+    private int GetBestRoute((int x, int y) point, List<(int x, int y)> otherPoints)
+    {
+        if (!otherPoints.Any())
+            return 0;
+    
+        // Calculate closest point
+        // var closestPoint = otherPoints.MinBy(p => Distance(p, point));
+        var closestDistance = otherPoints.Min(p => Distance(p, point));
+        var closestPoint = otherPoints.First(x => Distance(x, point) == closestDistance);
+        
+        otherPoints.Remove(closestPoint);
+        return closestDistance + GetBestRoute(closestPoint, otherPoints);
+    }
+
+    private int Distance((int x, int y) c1, (int x, int y) c2)
+        => Math.Abs(c1.x - c2.x) + Math.Abs(c1.y - c2.y);
+    
+    private float CalculateCoefficient()
+    {
+        var points = dictionary.Keys.Select(RackDataToCoordinate).ToList();
+        float distance = GetBestRoute(points.First(), points.Skip(1).ToList());
+        Debug.Log($"Most efficient distance is: {distance}");
+        return distance / MAX_DISTANCE;
+    }
+
+    public void SaveScore(float time)
+    {
+        Debug.Log("Saving score: "+time);
+        PlayerPrefs.SetFloat("pickOrderScore", (float)Math.Round(time));
+        PlayerPrefs.Save();
+    }
 
     public void Start()
     {
