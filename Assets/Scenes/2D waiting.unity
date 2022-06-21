@@ -1098,7 +1098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313aa1d2358b0ab4b82e5b7c93da1078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Lockers
+  sceneName: LockersBegin
   isActive: 1
 --- !u!1 &210727514
 GameObject:
