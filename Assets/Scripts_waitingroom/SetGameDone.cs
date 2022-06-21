@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class SetGameDone : MonoBehaviour
 {
-    public static bool HasStarted = true;
+    public static bool HasStarted = false;
     public static bool LoadTruckDone = false;
-    public static bool CirclePickOrderDone = false;
+    public static bool PickOrderDone = false;
     public GameObject circleLoadTruck;
     public GameObject circlePickOrder;
 
@@ -14,6 +14,7 @@ public class SetGameDone : MonoBehaviour
 
     private void Start()
     {
+        HasStarted = true;
         loadSceneTruck.DisableDoor();
         circleLoadTruck.GetComponent<SpriteRenderer>().color = UnityEngine.Color.grey;
         circlePickOrder.GetComponent<SpriteRenderer>().color = UnityEngine.Color.grey;
@@ -28,11 +29,10 @@ public class SetGameDone : MonoBehaviour
             loadSceneTruck.EnableDoor();
             circleLoadTruck.GetComponent<SpriteRenderer>().color = UnityEngine.Color.red;
             circlePickOrder.GetComponent<SpriteRenderer>().color = UnityEngine.Color.red;
-            
         }
 
         if (LoadTruckDone) SetDoneTruck();
-        if (CirclePickOrderDone) SetDoneOrder();
+        if (PickOrderDone) SetDoneOrder();
     }
 
     private void SetDoneTruck()

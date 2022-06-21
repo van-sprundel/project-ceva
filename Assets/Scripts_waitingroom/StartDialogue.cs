@@ -23,13 +23,14 @@ public class StartDialogue : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        SetGameDone.HasStarted = false;
         backgroundImage.SetActive(true);
         TextStab.volume = 0.1f;
-        if (!DialogueFinished )
+        if (!DialogueFinished)
         {
+            backgroundImage.SetActive(true);
             var playerName = PlayerPrefs.GetString("Name");
             _textRows[0] = _textRows[0].Substring(0, _textRows[0].Length - 1) + ", " + playerName + "!";
-            backgroundImage.SetActive(true);
             StartCoroutine(UpdateText());
         }
         else
@@ -37,6 +38,7 @@ public class StartDialogue : MonoBehaviour
             SetGameDone.HasStarted = true;
             backgroundImage.SetActive(false);
         }
+      
     }
 
 

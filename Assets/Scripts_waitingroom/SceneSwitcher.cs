@@ -29,4 +29,9 @@ public class SceneSwitcher : MonoBehaviour
     {
         SceneManager.LoadScene("Scenes/2D waiting");
     }
+
+    public void EndScene()
+    {
+        SceneManager.LoadScene("EndScene");
+    }
 }
