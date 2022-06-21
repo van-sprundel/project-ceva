@@ -34,6 +34,7 @@ public class StartDialogue : MonoBehaviour
         }
         else
         {
+            SetGameDone.HasStarted = true;
             backgroundImage.SetActive(false);
         }
     }

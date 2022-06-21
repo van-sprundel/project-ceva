@@ -25,7 +25,7 @@ public class ShakeCamera : MonoBehaviour
         if (!StartDialogue.DialogueFinished || shaken) return;
 
         shaken = true;
-        StartCoroutine(Shake());
+        // StartCoroutine(Shake());
     }
 
 
