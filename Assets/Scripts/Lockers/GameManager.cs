@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
     public void Finish()
     {
         var time = script.StopRunning();
+        TotalScore.OrderPlayed();
         SaveScore(time);
     }
 
