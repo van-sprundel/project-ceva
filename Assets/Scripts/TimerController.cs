@@ -35,7 +35,7 @@ public class TimerController : MonoBehaviour
         SceneManager.LoadScene("TetrisEnd");
     }
 
-    private int EvaluateScore()
+    private float EvaluateScore()
     {
         var squares = SnapController._grid;
         var squaresFilled = 0;
@@ -43,6 +43,6 @@ public class TimerController : MonoBehaviour
             if (square)
                 squaresFilled += 1;
 
-        return squaresFilled + (int)timer;
+        return (squaresFilled / 64f) * timer;
     }
 }
