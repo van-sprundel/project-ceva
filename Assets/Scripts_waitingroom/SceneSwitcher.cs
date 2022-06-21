@@ -6,12 +6,12 @@ public class SceneSwitcher : MonoBehaviour
     // Start is called before the first frame update
     public void PlayTetris()
     {
-        if (StartDialogue.DialogueFinished) SceneManager.LoadScene("Scenes/Tetris");
+        SceneManager.LoadScene("Scenes/Tetris");
     }
 
     public void PlayLockers()
     {
-        if (StartDialogue.DialogueFinished) SceneManager.LoadScene("Scenes/Lockers");
+       SceneManager.LoadScene("Scenes/Lockers");
     }
 
     public void Home()

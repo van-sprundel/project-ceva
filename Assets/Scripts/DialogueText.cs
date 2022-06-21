@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DialogueText : MonoBehaviour
 {
+    public float TextSpeed = 0.04f;
     public AudioSource AudioSource;
     public Button button;
     private string text;
@@ -25,6 +26,11 @@ public class DialogueText : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TextSpeed = 0.01f;
+        }
+
         if (textDone)
         {
             textDone = false;
@@ -38,7 +44,7 @@ public class DialogueText : MonoBehaviour
         {
             textMeshPro.text = text.Substring(0, i);
             AudioSource.Play();
-            yield return new WaitForSeconds(0.04f);
+            yield return new WaitForSeconds(TextSpeed);
         }
 
         textDone = true;

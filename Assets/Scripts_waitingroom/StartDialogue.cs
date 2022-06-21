@@ -26,8 +26,10 @@ public class StartDialogue : MonoBehaviour
         SetGameDone.HasStarted = false;
         backgroundImage.SetActive(true);
         TextStab.volume = 0.1f;
-        if (!DialogueFinished)
+        if (!DialogueFinished && PlayerPrefs.GetInt("FirstDialogue") == 0)
         {
+            PlayerPrefs.SetInt("FirstDialogue",1);
+            PlayerPrefs.Save();
             backgroundImage.SetActive(true);
             var playerName = PlayerPrefs.GetString("Name");
             _textRows[0] = _textRows[0].Substring(0, _textRows[0].Length - 1) + ", " + playerName + "!";
