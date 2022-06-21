@@ -43,6 +43,6 @@ public class TimerController : MonoBehaviour
             if (square)
                 squaresFilled += 1;
 
-        return (int)((squaresFilled / 64f) * timer);
+        return (int)(squaresFilled + squaresFilled/64f*timer);
     }
 }
