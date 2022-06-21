@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SetGameDone : MonoBehaviour
 {
-    public static bool HasStarted = false;
+    public static bool HasStarted = true;
     public static bool LoadTruckDone = false;
     public static bool CirclePickOrderDone = false;
     public GameObject circleLoadTruck;
