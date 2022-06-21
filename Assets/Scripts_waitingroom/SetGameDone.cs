@@ -37,13 +37,13 @@ public class SetGameDone : MonoBehaviour
 
     private void SetDoneTruck()
     {
-        loadSceneTruck.DisableDoor();
+        // loadSceneTruck.DisableDoor();
         circleLoadTruck.GetComponent<SpriteRenderer>().color = UnityEngine.Color.green;
     }
 
     private void SetDoneOrder()
     {
-        loadSceneOrderPick.DisableDoor();
+        // loadSceneOrderPick.DisableDoor();
         circlePickOrder.GetComponent<SpriteRenderer>().color = UnityEngine.Color.green;
     }
 }
