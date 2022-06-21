@@ -12,11 +12,14 @@ public class LoadScene : MonoBehaviour
     {
         if (!isActive) return;
         if (!collision.gameObject.CompareTag("Player") || _isEntered) return;
-        if (!StartDialogue.DialogueFinished) return;
         _isEntered = true;
         SceneManager.LoadScene(sceneName);
     }
 
+    public void EnableDoor()
+    {
+        isActive = true;
+    }
     public void DisableDoor()
     {
         isActive = false;

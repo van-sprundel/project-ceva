@@ -24,7 +24,7 @@ public class MainMenuScript : MonoBehaviour
     public void EnterDetails()
     {
         if (!isFilledIn) return;
-
+        StartDialogue.DialogueFinished = false;
         PlayerPrefs.SetString("Name", inputField.text);
         PlayerPrefs.Save();
         SceneManager.LoadScene("2D waiting");

@@ -35,7 +35,7 @@ public class TimerScript : MonoBehaviour
     {
         running = false;
         _TextMeshPro.text = "You won! Time: " + GetTime();
-        SetGameDone.circlePickOrderDone = true;
+        SetGameDone.CirclePickOrderDone = true;
         return (float)Math.Round(_startTime);
     }
 

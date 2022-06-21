@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StartDialogue : MonoBehaviour
 {
-    public static bool DialogueFinished;
+    public AudioSource TextStab;
+    public static bool DialogueFinished = true;
     public TextMeshProUGUI currentText;
     public GameObject backgroundImage;
 
@@ -22,7 +23,9 @@ public class StartDialogue : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        if (!DialogueFinished)
+        backgroundImage.SetActive(true);
+        TextStab.volume = 0.1f;
+        if (!DialogueFinished )
         {
             var playerName = PlayerPrefs.GetString("Name");
             _textRows[0] = _textRows[0].Substring(0, _textRows[0].Length - 1) + ", " + playerName + "!";
@@ -44,10 +47,12 @@ public class StartDialogue : MonoBehaviour
             {
                 currentText.text = row.Substring(0, i);
                 yield return new WaitForSeconds(0.05f);
+                TextStab.Play();
             }
             yield return new WaitForSeconds(2.0f);
         }
         DialogueFinished = true;
+        SetGameDone.HasStarted = true;
 
         currentText.text = "";
         backgroundImage.SetActive(false);
